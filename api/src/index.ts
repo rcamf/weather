@@ -1,7 +1,10 @@
+import cors from 'cors';
 import express from 'express';
 
 const app = express();
 const port = 8080; // default port to listen
+
+app.use(cors());
 
 // Standard-URL, wenn man einfach auf `localhost:8080` navigiert
 app.get('/', (req, res) => {
