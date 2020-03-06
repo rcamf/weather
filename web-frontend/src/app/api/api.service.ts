@@ -1,10 +1,10 @@
-import { first } from 'rxjs/operators';
+import { first } from "rxjs/operators";
 
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root"
 })
 export class ApiService {
   // Das ist Dependency Injection. Der ApiService fordert sozusagen den HttpClient (von Angular) an, mit dessen Hilfe man Anfragen an eine API ausführen kann
@@ -20,7 +20,7 @@ export class ApiService {
         // Dies hat keinen Einfluss auf den Request, hilft uns aber beim Schreiben der Web-App, damit wir Tippfehler bemerken, was dann zu einem Compilerfehler führen würde.
         temperature: number;
         rainHours: number;
-      }>('http://localhost:8080')
+      }>("http://localhost:8080")
       .pipe(first())
       .toPromise();
   }
