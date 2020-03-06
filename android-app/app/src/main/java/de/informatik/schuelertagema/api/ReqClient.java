@@ -22,7 +22,7 @@ public class ReqClient {
 
     public ReqClient() {
         try {
-            url = new URL("http://192.168.55.174:8080/api/getdata");
+            url = new URL("http://192.168.55.112:8080/api/getdata");
         } catch (MalformedURLException f) {
             f.printStackTrace();
         }
@@ -46,7 +46,7 @@ public class ReqClient {
             for(int i =0;i<eingabe.length();i++){
                 JSONObject temp = eingabe.getJSONObject(i);
                 Calendar t = Calendar.getInstance();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-d-HH-mm");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd-HH-mm");
                 t.setTime(sdf.parse(temp.getString("date")));
                 WDataArray[i]= new WData(temp.getInt("humidity"),temp.getDouble("temperature"), t);
             }
