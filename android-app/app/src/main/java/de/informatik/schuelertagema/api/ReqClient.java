@@ -22,7 +22,7 @@ public class ReqClient {
 
     public ReqClient() {
         try {
-            url = new URL("http://example.com");
+            url = new URL("http://192.168.55.174:8080/api/getdata");
         } catch (MalformedURLException f) {
             f.printStackTrace();
         }
