@@ -1,0 +1,20 @@
+gitlab.com
+-> Login via Google
+
+wogitlab@gmail.com
+h2h&2jius7%
+
+
+
+
+ssh-keygen -t rsa -b 4096 -C "wogitlab@gmail.com"
+alles mit enter bestätigen
+
+
+
+
+ cat ~/.ssh/id_rsa.pub
+
+
+
+gitlab.com -> settings -> SSH-Keys -> Hinzufügen (als Namen bitte den Rechner Namen verwenden)
