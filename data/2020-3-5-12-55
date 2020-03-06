@@ -1,0 +1,4 @@
+{
+    temperature: 25.2, // In Celsius
+    humidity: 5,
+}
