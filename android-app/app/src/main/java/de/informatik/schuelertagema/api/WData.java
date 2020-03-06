@@ -1,7 +1,7 @@
 package de.informatik.schuelertagema.api;
 
 import java.util.Calendar;
-import java.util.Date;
+
 
 public class WData {
     private int humidity;
@@ -12,14 +12,11 @@ public class WData {
         temperature = pTemperature;
         Zeit = pTime;
     }
-  public int getHumidity(){
-        return humidity;
-  }
+    public int getHumidity(){
+        return humidity; }
     public double getTemperature(){
-        return temperature;
-    }
+        return temperature; }
     public Calendar getDate(){
-        return Zeit;
-    }
+        return Zeit; }
 }
 
