@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
-import { ApiService } from '../api/api.service';
+import { ApiService } from "../api/api.service";
 
 @Component({
-  selector: 'app-demo',
-  templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.scss'],
+  selector: "app-demo",
+  templateUrl: "./demo.component.html",
+  styleUrls: ["./demo.component.scss"]
 })
 export class DemoComponent implements OnInit {
   @Input() exampleInput: string;
