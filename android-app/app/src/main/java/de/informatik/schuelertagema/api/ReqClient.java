@@ -41,7 +41,7 @@ public class ReqClient {
         }
         in.close();
         try {
-            JSONArray eingabe = new JSONArray(inputLine);
+            JSONArray eingabe = new JSONArray(content.toString());
             WData[] WDataArray = new WData[eingabe.length()];
             for(int i =0;i<eingabe.length();i++){
                 JSONObject temp = eingabe.getJSONObject(i);
