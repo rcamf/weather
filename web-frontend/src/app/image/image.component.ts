@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./image.component.scss"]
 })
 export class ImageComponent implements OnInit {
-  @Input() humidity: any;
+  @Input() path: any;
 
   constructor() {}
 

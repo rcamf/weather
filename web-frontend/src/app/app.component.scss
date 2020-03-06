@@ -2,16 +2,32 @@
   display: flex;
   justify-content: center;
   color: #ffbb00;
-  background-color: #10658e;
-  font-size: xx-large;
+  font-size: 60px;
   font-family: arial;
   text-align: center;
 }
 
+#flexdiv {
+  width: 55%;
+  height: 800px;
+  background-color: #10658e;
+}
+
 #banner {
+  color: #ffbb00;
+  background-color: #00537f;
+  font-size: xx-large;
+  font-family: arial;
+  text-align: center;
   position: static;
   left: 0;
   top: 0;
   width: 100%;
-  height: 100px;
+  height: 120px;
+  border-style: solid;
+  border-color: #00537f;
+  border-width: 2px;
+  border-bottom-color: #ffbb00;
+  padding: 20px;
+  margin: 0;
 }

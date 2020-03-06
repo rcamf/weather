@@ -20,7 +20,7 @@ export class ApiService {
         // Dies hat keinen Einfluss auf den Request, hilft uns aber beim Schreiben der Web-App, damit wir Tippfehler bemerken, was dann zu einem Compilerfehler führen würde.
         temperature: number;
         humidity: number;
-      }>("http://localhost:8080/getCurrentData")
+      }>("http://192.168.55.112:8080/api/getCurrentData")
       .pipe(first())
       .toPromise();
   }
@@ -34,7 +34,7 @@ export class ApiService {
         // Dies hat keinen Einfluss auf den Request, hilft uns aber beim Schreiben der Web-App, damit wir Tippfehler bemerken, was dann zu einem Compilerfehler führen würde.
         temperature: number;
         humidity: number;
-      }>("http://localhost:8080/getData")
+      }>("http://localhost:8080/api/getData")
       .pipe(first())
       .toPromise();
   }

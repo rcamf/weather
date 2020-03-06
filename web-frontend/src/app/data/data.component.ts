@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from "@angular/core";
 export class DataComponent implements OnInit {
   @Input() header: any;
   @Input() value: number;
+  @Input() unit: string;
 
   constructor() {}
 
