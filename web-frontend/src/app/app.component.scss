@@ -1,4 +1,17 @@
 #maindiv {
   display: flex;
   justify-content: center;
+  color: #ffbb00;
+  background-color: #10658e;
+  font-size: xx-large;
+  font-family: arial;
+  text-align: center;
+}
+
+#banner {
+  position: static;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100px;
 }

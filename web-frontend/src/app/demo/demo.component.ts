@@ -19,7 +19,7 @@ export class DemoComponent implements OnInit {
   // Diese Methode ist mit "async" gekennzeichnet, da sie asynchrone Operationen ausführt (das Abfragen der Daten von der API)
   async onButtonClick() {
     // Anfrage an die API ausführen und auf das Ergebnis warten (await)
-    const apiResult = await this.api.doRequest();
+    const apiResult = await this.api.doRequestCurrent();
     this.exampleOutput.emit(JSON.stringify(apiResult));
   }
 }

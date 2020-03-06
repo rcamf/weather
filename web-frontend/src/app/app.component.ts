@@ -14,9 +14,9 @@ export class AppComponent implements OnInit {
   constructor(private apiservice: ApiService) {}
 
   ngOnInit(): void {
-    this.apiservice.doRequest().then(d => {
+    this.apiservice.doRequestCurrent().then(d => {
       this.temperature = d.temperature;
-      this.humidity = d.rainHours;
+      this.humidity = d.humidity;
       console.log({ temp: this.temperature, hum: this.humidity });
       console.log(d);
     });

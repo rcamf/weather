@@ -1,12 +1,12 @@
 <div id="maindiv">
   <div id="flexdiv">
-    <h1>Wetter Heute</h1>
+    <div id="banner"><h1>Wetter Heute</h1></div>
     <app-image [humidity]="humidity"></app-image>
     <!-- <app-demo
         [exampleInput]="inputValue"
         (exampleOutput)="onOutputTriggered($event)"
       ></app-demo> -->
-    <app-data [header]="'Temperatur'" [value]="temperature"></app-data>
-    <app-data [header]="'Luftfeuchtigkeit'" [value]="humidity"></app-data>
+    <app-data [header]="'Temperature'" [value]="temperature + '°C'"></app-data>
+    <app-data [header]="'Luftfeuchtigkeit'" [value]="humidity + '%'"></app-data>
   </div>
 </div>
