@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
-import { ApiService } from '../api/api.service';
+import { ApiService } from "../api/api.service";
 
 @Component({
-  selector: 'app-demo',
-  templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.scss'],
+  selector: "app-demo",
+  templateUrl: "./demo.component.html",
+  styleUrls: ["./demo.component.scss"]
 })
 export class DemoComponent implements OnInit {
   @Input() exampleInput: string;
@@ -19,7 +19,7 @@ export class DemoComponent implements OnInit {
   // Diese Methode ist mit "async" gekennzeichnet, da sie asynchrone Operationen ausführt (das Abfragen der Daten von der API)
   async onButtonClick() {
     // Anfrage an die API ausführen und auf das Ergebnis warten (await)
-    const apiResult = await this.api.doRequest();
+    const apiResult = await this.api.doRequestCurrent();
     this.exampleOutput.emit(JSON.stringify(apiResult));
   }
 }

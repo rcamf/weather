@@ -1,10 +1,12 @@
-<p>app works!</p>
-
-<!-- Durch die folgende Zeile wird der Inhalt der DemoComponent angezeigt -->
-<!-- Die eckigen Klammern definieren, welcher Wert in den @Input der Komponente reingegeben werden soll -->
-<!-- Die runden Klammern definieren, welche Funktion ausgeführt werden soll, wenn der @Output der Komponente ausgeführt wird. -->
-<!-- Wichtig ist hier auch das $event. Dieses ist an dieser Stelle ein Platzhalter für die Daten, die aus dem Output raus kommen, und an die Funktion übergeben werden sollen. -->
-<app-demo
-  [exampleInput]="inputValue"
-  (exampleOutput)="onOutputTriggered($event)"
-></app-demo>
+<div id="maindiv">
+  <div id="flexdiv">
+    <div id="banner"><h1>Wetter Heute</h1></div>
+    <app-image [humidity]="humidity"></app-image>
+    <!-- <app-demo
+        [exampleInput]="inputValue"
+        (exampleOutput)="onOutputTriggered($event)"
+      ></app-demo> -->
+    <app-data [header]="'Temperature'" [value]="temperature + '°C'"></app-data>
+    <app-data [header]="'Luftfeuchtigkeit'" [value]="humidity + '%'"></app-data>
+  </div>
+</div>
