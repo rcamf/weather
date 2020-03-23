@@ -96,13 +96,13 @@ app.get("/api/getNextData", (req, res) => {
             parseInt(dateParts[4], 10)
           );
           const output = [];
-          let slopeTemp = Math.floor(Math.random() * 3) - 1;
-          let slopeHum = Math.floor(Math.random() * 3) - 1;
+          let slopeTemp = Math.floor(Math.random() * 3) - 1 + Math.random() < 0.5 ? -0.1 : 0.1;
+          let slopeHum = Math.floor(Math.random() * 3) - 1 + Math.random() < 0.5 ? -0.1 : 0.1;
           for (let i = 0; i < END; i++) {
             currentDate.setMinutes(currentDate.getMinutes() + 1); // Nächstes Datum
-            if (i % (Math.floor(Math.random() * 3) + 4) === 0) {
-              slopeTemp = Math.floor(Math.random() * 3) - 1;
-              slopeHum = Math.floor(Math.random() * 3) - 1;
+            if (i % (Math.floor(Math.random() * 3) + 3) === 0) {
+              slopeTemp = Math.floor(Math.random() * 3) - 1 + Math.random() < 0.5 ? -0.1 : 0.1;
+              slopeHum = Math.floor(Math.random() * 3) - 1 + Math.random() < 0.5 ? -0.1 : 0.1;
             }
             weather = {
               temperature:
@@ -111,25 +111,9 @@ app.get("/api/getNextData", (req, res) => {
             };
             output.push({
               date:
-                currentDate.getFullYear() +
-                "-" +
-                (currentDate.getMonth() < 10
-                  ? "0" + currentDate.getMonth()
-                  : currentDate.getMonth()) +
-                "-" +
-                (currentDate.getDate() < 10
-                  ? "0" + currentDate.getDate()
-                  : currentDate.getDate()) +
-                "-" +
-                (currentDate.getHours() < 10
-                  ? "0" + currentDate.getHours()
-                  : currentDate.getHours()) +
-                "-" +
-                (currentDate.getMinutes() < 10
-                  ? "0" + currentDate.getMinutes()
-                  : currentDate.getMinutes()),
-              temperature: weather.temperature.toFixed(2),
-              humidity: weather.humidity.toFixed(2)
+                currentDate.getFullYear() + "-" +(currentDate.getMonth() + "-").padStart(3, '0') + (currentDate.getDate()  + "-").padStart(3, '0') + (currentDate.getHours() + "-").padStart(3, '0') + (currentDate.getMinutes() + "").padStart(2, '0'),
+              temperature: weather.temperature.toFixed(4),
+              humidity: weather.humidity.toFixed(4)
             });
           }
           res.send(output);
