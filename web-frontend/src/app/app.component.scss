@@ -2,14 +2,13 @@
   display: flex;
   justify-content: center;
   color: #ffbb00;
-  font-size: 60px;
+  font-size: 50px;
   font-family: arial;
   text-align: center;
 }
 
 #flexdiv {
   width: 55%;
-  height: 1000px;
   background-color: #10658e;
 }
 
@@ -30,4 +29,12 @@
   border-bottom-color: #ffbb00;
   padding: 20px;
   margin: 0;
+}
+
+#nextchartdiv {
+  padding: 3vh;
+}
+
+#prevchartdiv {
+  padding: 3vh;
 }

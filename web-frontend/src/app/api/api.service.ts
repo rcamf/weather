@@ -16,11 +16,10 @@ export class ApiService {
     // Wenn ihr mehr wissen wollt, fragt Dr. Google
     return this.http
       .get<{
-        // Hier wird die Datenstruktur definiert, welche vom Server erwartet wird
-        // Dies hat keinen Einfluss auf den Request, hilft uns aber beim Schreiben der Web-App, damit wir Tippfehler bemerken, was dann zu einem Compilerfehler führen würde.
-        temperature: number;
-        humidity: number;
-      }>("http://192.168.55.112:8080/api/getCurrentData")
+        date: string
+        temperature: number
+        humidity: number
+      }>("http://localhost:8080/api/getCurrentData")
       .pipe(first())
       .toPromise();
   }
@@ -29,11 +28,11 @@ export class ApiService {
     // GET ist eine der Methoden, mit denen man Routen einer API aufrufen kann. Es gibt unter anderem auch noch POST, DELETE oder PUT
     // Wenn ihr mehr wissen wollt, fragt Dr. Google
     return this.http
-      .get<{
-        // Hier wird die Datenstruktur definiert, welche vom Server erwartet wird
-        // Dies hat keinen Einfluss auf den Request, hilft uns aber beim Schreiben der Web-App, damit wir Tippfehler bemerken, was dann zu einem Compilerfehler führen würde.
-        data: any;
-      }>("http://192.168.55.112:8080/api/getData")
+      .get<[{
+        date: string
+        temperature: number
+        humidity: number
+      }]>("http://localhost:8080/api/getData")
       .pipe(first())
       .toPromise();
   }
@@ -42,11 +41,11 @@ export class ApiService {
     // GET ist eine der Methoden, mit denen man Routen einer API aufrufen kann. Es gibt unter anderem auch noch POST, DELETE oder PUT
     // Wenn ihr mehr wissen wollt, fragt Dr. Google
     return this.http
-      .get<{
-        // Hier wird die Datenstruktur definiert, welche vom Server erwartet wird
-        // Dies hat keinen Einfluss auf den Request, hilft uns aber beim Schreiben der Web-App, damit wir Tippfehler bemerken, was dann zu einem Compilerfehler führen würde.
-        data: any;
-      }>("http://192.168.55.112:8080/api/getData")
+      .get<[{
+        date: string
+        temperature: number
+        humidity: number
+      }]>("http://localhost:8080/api/getNextData")
       .pipe(first())
       .toPromise();
   }

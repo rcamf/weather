@@ -12,8 +12,10 @@ export class AppComponent implements OnInit {
   humidity = 0;
   path =
     "http://st.wetteronline.de/dr/1.1.162/city/prozess/graphiken/symbole/standard/farbe/svg/centered/mdr2__.svg";
-  ot = 0;
-  nd = 0;
+  ot = [];
+  oh = [];
+  nt = [];
+  nh = [];
 
   constructor(private apiservice: ApiService) {}
 
@@ -33,13 +35,29 @@ export class AppComponent implements OnInit {
       }
     });
     this.apiservice.doRequestData().then(d => {
-      this.ot = d[0].temperature;
+      for (let index = 0; index < d.length; index++) {
+        this.ot = [...this.ot, {
+          data: d[index].temperature,
+          label: d[index].date.substring(d[index].date.length - 5)
+        }]
+        this.oh = [...this.oh, {
+          data: d[index].humidity,
+          label: d[index].date.substring(d[index].date.length - 5)
+        }]        
+      }
     });
     this.apiservice.doRequestNext().then(d => {
-      this.nd = d[0].temperature;
+      for (let index = 0; index < d.length; index++) {
+        this.nt = [...this.nt, {
+          data: d[index].temperature,
+          label: d[index].date.substring(d[index].date.length - 5)
+        }]
+        this.nh = [...this.nh, {
+          data: d[index].humidity,
+          label: d[index].date.substring(d[index].date.length - 5)
+        }]        
+      }
     });
-    // const d = new Date();
-    // document.getElementById("uber").innerHTML += "" + d;
   }
 
   onOutputTriggered(value: string) {

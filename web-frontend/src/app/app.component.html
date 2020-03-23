@@ -10,10 +10,6 @@
 <div id="maindiv">
   <div id="flexdiv">
     <app-image [path]="path"></app-image>
-    <!-- <app-demo
-        [exampleInput]="inputValue"
-        (exampleOutput)="onOutputTriggered($event)"
-      ></app-demo> -->
     <app-data
       [header]="'Temperatur'"
       [value]="temperature"
@@ -29,5 +25,31 @@
       [value]="ot"
       [unit]="'°C'"
     ></app-data>
+    <h3>
+      Wetter der letzten Stunde
+    </h3>
+    <div id="prevchartdiv">
+      <app-line-chart
+        [data]="ot"
+        [header]="'Temperature'"
+      ></app-line-chart>
+      <app-line-chart
+        [data]="oh"
+        [header]="'Humidity'"
+      ></app-line-chart>
+    </div>
+    <h3>
+      Wetter der nächsten Stunde
+    </h3>
+    <div id="nextchartdiv">
+      <app-line-chart
+        [data]="nt"
+        [header]="'Temperature'"
+      ></app-line-chart>
+      <app-line-chart
+        [data]="nh"
+        [header]="'Humidity'"
+      ></app-line-chart>
+    </div>
   </div>
 </div>
