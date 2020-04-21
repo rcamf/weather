@@ -1,0 +1,22 @@
+#tabList {
+  list-style: none;
+  display: flex;
+  border-bottom: 1px #ffbb00 solid;
+  padding: 0;
+}
+
+.tabLink {
+  padding: 3px;
+  font-size: 70%;
+  border-right: 1px #ffbb00 solid;
+  background-color: #ffbb00;
+  color: #10658e;
+  border-radius: 5px 5px 0 0;
+}
+
+.activeTabLink {
+  background-color: #10658e;
+  color: #ffbb00;
+  font-size: 80%;
+  padding: 3px;
+}

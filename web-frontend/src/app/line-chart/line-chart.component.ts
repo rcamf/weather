@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges, IterableDiffers, IterableDiffer } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, IterableDiffers, IterableDiffer, SimpleChanges } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 
@@ -66,8 +66,8 @@ export class LineChartComponent {
   lineChartPlugins = [];
   lineChartType = 'line';
 
-  ngOnChanges() {
-    if (this.data.length) {
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.data) {
       let data = []
       let labels = []
       this.data.forEach(object => {
@@ -78,10 +78,5 @@ export class LineChartComponent {
       this.lineChartData[0].label = this.header
       this.lineChartLabels = labels
     } 
-  }
-  
-
-  
-
-  
+  }  
 }
