@@ -1,10 +1,10 @@
-import { Database } from "sqlite3"
 import * as dotenv from "dotenv"
+import Database from "better-sqlite3"
 
 dotenv.config()
-const db = new Database(process.env.DATABASE, err => {
-  if (err) return console.log(err.message)
-  console.log('Database started')
-})
+
+const db = new Database(process.env.DATABASE)
+console.log(db.pragma('foreign_keys=ON'))
+console.log(db.pragma('journal_mode=WAL'))
 
 export { db as Database }
