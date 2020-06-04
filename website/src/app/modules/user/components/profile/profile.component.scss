@@ -1,0 +1,33 @@
+.container {
+  margin: 0.5vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.row {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.profile-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5vh;
+}
+
+.checkbox-field {
+  flex: 1;
+  display: flex;
+  margin: 0.5vh;
+}
+
+span {
+  font-size: larger;
+}
+
+.align-right {
+  align-self: flex-end;
+}

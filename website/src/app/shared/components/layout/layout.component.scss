@@ -1,0 +1,13 @@
+.rootcontainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.max-width {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  max-width: 1140px;
+  align-self: center;
+}

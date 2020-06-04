@@ -1,0 +1,40 @@
+@import '~@angular/material/theming';
+
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 0.5vh;
+}
+
+.card {
+  margin: 0.25vh;
+}
+
+.fill {
+  flex: 1;
+  align-self: stretch;
+}
+
+.sidenav {
+  position: sticky;
+  top: 0.25vh;
+}
+
+@mixin user-sidenav-mixin($theme) {
+  $accent: map-get($map: $theme, $key: accent);
+
+  .color, .color:visited {
+    color: mat-color($accent);
+    text-decoration: none;
+  }
+
+  .color:hover {
+    color: mat-color($accent, lighter);
+  }
+
+  .active, .active:visited {
+    color: white;
+  }
+}

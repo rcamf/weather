@@ -1,0 +1,39 @@
+<app-layout>
+  <div class='container'>
+    <mat-card class='card fill'>
+      <mat-card-title>
+        Endpoints
+      </mat-card-title>
+      <div class='divider'>
+        <mat-divider></mat-divider>
+      </div>
+      <mat-card-content>
+        <mat-accordion *ngIf='endpoints'>
+          <mat-expansion-panel *ngFor='let endpoint of endpoints; index as i'>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ endpoint.city + ', ' + endpoint.country }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-list-item>Endpoint id: {{ endpoint.id }}</mat-list-item>
+              <mat-list-item>City: {{ endpoint.city }}</mat-list-item>
+              <mat-list-item>Country: {{ endpoint.country }}</mat-list-item>
+              <mat-list-item>Owner id: {{ endpoint.owner_id }}</mat-list-item>
+              <mat-list-item>Latitude: {{ endpoint.lat }}</mat-list-item>
+              <mat-list-item>Longitude: {{ endpoint.long }}</mat-list-item>
+              <mat-list-item *ngIf='user && subscriptions'>
+                <div class='button-row'>
+                  <button mat-icon-button (click)='changeSubscription(endpoint)'>
+                    <mat-icon [color]="isSubscribed(endpoint) ? 'primary' : ''">{{ isSubscribed(endpoint) ? 'favorite' : 'favorite_border'}}</mat-icon>
+                  </button>
+                </div>
+              </mat-list-item>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-spinner *ngIf='!endpoints'></mat-spinner>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</app-layout>

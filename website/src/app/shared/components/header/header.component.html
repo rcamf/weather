@@ -1,0 +1,27 @@
+<mat-toolbar color='primary' role='heading'>
+  <a mat-button class='navlink' routerLink='/'>
+    Weather
+  </a>
+  <a mat-button class='navlink' routerLink='/endpoints'>
+    Endpoints
+  </a>
+  <a mat-button class='navlink' routerLink='/users' *ngIf='isActiveUser()'>
+    Users
+  </a>
+  <span class="spacer"></span>
+  <a mat-button class='navlink' routerLink='/signup' *ngIf='!isActiveUser()'>
+    Signup
+  </a>
+  <a mat-button class='navlink' routerLink='/login' *ngIf='!isActiveUser()'>
+    Login
+  </a>
+  <mat-menu #menu='matMenu' backdropClass='customize' panelClass='toolbar-mat-menu'>
+    <a mat-menu-item routerLink='/user'>Profile</a>
+    <a mat-menu-item routerLink='/user/endpoints'>Endpoints</a>
+    <a mat-menu-item routerLink='/user/subscriptions'>Subscriptions</a>
+    <button mat-menu-item (click)='logout()'>Logout</button>
+  </mat-menu>
+  <button mat-icon-button [matMenuTriggerFor]='menu' class='navlink' *ngIf='isActiveUser()'>
+    <mat-icon>account_circle</mat-icon>
+  </button>
+</mat-toolbar>

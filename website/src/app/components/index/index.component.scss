@@ -1,0 +1,54 @@
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 0.5vh;
+}
+
+.searchbar {
+  display: flex;
+  align-items: center;
+}
+
+.split {
+  display: flex;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  margin: 0.25vh;
+  width: 100%;
+}
+
+.fill {
+  flex: 1;
+}
+
+.information {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.image {
+  margin: 0.5vh;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.infotext {
+  font-size: larger;
+  margin: 0.5vh;
+}
+
+#hiddenimage {
+  visibility: hidden;
+}

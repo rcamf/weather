@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>Create Endpoint</h1>
+<div mat-dialog-content>
+  <form [formGroup]='createForm'>
+    <div class='container'>
+      <div class='row'>
+        <div class='profile-field'>
+          <mat-form-field appearance='outline'>
+            <mat-label>City</mat-label>
+            <input matInput formControlName='city' required>
+            <mat-error *ngIf="createForm.get('city').hasError('required')">A city is required</mat-error>
+            <mat-error *ngIf="createForm.get('city').hasError('conflict')">This endpoint exists already</mat-error>
+          </mat-form-field>
+        </div>
+        <div class='profile-field'>
+          <mat-form-field appearance='outline'>
+            <mat-label>Country</mat-label>
+            <input matInput formControlName='country' required>
+            <mat-error *ngIf="createForm.get('country').hasError('required')">A country is required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='profile-field'>
+          <mat-form-field appearance='outline'>
+            <mat-label>Latitude</mat-label>
+            <input matInput formControlName='lat' required>
+            <mat-error *ngIf="createForm.get('lat').invalid">A valid latitute (degrees) is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class='profile-field'>
+          <mat-form-field appearance='outline'>
+            <mat-label>Longitude</mat-label>
+            <input matInput formControlName='long' required>
+            <mat-error *ngIf="createForm.get('long').invalid">A valid longitude (degrees) is required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <button mat-raised-button color='primary' class='align-right' (click)='create()'>Create</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,30 @@
+<mat-card-title>My Subscriptions</mat-card-title>
+<div class='container'>
+  <mat-divider></mat-divider>
+</div>
+<mat-card-content>
+  <mat-accordion *ngIf='endpoints'>
+    <mat-expansion-panel *ngFor='let endpoint of endpoints'>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ endpoint.city + ', ' + endpoint.country }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item>Endpoint id: {{ endpoint.id }}</mat-list-item>
+        <mat-list-item>City: {{ endpoint.city }}</mat-list-item>
+        <mat-list-item>Country: {{ endpoint.country }}</mat-list-item>
+        <mat-list-item>Owner id: {{ endpoint.owner_id }}</mat-list-item>
+        <mat-list-item>Latitude: {{ endpoint.lat }}</mat-list-item>
+        <mat-list-item>Longitude: {{ endpoint.long }}</mat-list-item>
+        <mat-list-item>
+          <div class='button-row'>
+            <button mat-raised-button color='primary' (click)='unsubscribe(endpoint)'>Unsubscribe</button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div class='button-row margin'>
+  </div>
+</mat-card-content>
