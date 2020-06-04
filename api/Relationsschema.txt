@@ -1,0 +1,24 @@
+endpoints(id, city, country, url, owner_id, lat, long)
+users(id, username, name, surname, email, public, password, followers, following)
+endpoint_administration(endpoint_id, api_token) ! TO DO !
+endpoint_data(endpoint_id, date, temperature, humidity)
+endpoints_subscriptions(endpoint_id, user_id)
+user_follows(user_id, follower_id)
+
+auth routes:
+  login
+  signup
+
+user routes:
+index
+  :user:
+    endpoints
+    followed_endpoints
+    followed_users
+
+endpoint routes
+  index 
+  :endpoint:
+    currentData
+    data
+    nextData
