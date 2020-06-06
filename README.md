@@ -34,4 +34,4 @@ Sobald der Befehl fertig ist, laufen auf deinem Rechner zwei verschiedene Contai
 [1]: https://git-scm.com/downloads
 [2]: https://nodejs.org/en/download/
 [3]: https://docs.docker.com/compose/install/
-[4]: https://github.com/cfRIKO/weather/wiki
+[4]: https://github.com/cfRIKO/weather/wiki/Api-Dokumentation
