@@ -1,4 +1,6 @@
-<div style='display: block'>
-  <canvas baseChart [datasets]='lineChartData' [labels]='lineChartLabels' [options]='lineChartOptions'
-    [colors]='lineChartColors' [legend]='lineChartLegend' [chartType]='lineChartType'></canvas>
+<div class='chart-container'>
+  <div style='display: block; width: 45vw'>
+    <canvas baseChart [datasets]='lineChartData' [labels]='lineChartLabels' [options]='lineChartOptions'
+      [colors]='lineChartColors' [legend]='lineChartLegend' [chartType]='lineChartType' (resize)='test($event)'></canvas>
+  </div>
 </div>

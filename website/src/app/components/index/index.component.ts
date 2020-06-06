@@ -38,11 +38,12 @@ export class IndexComponent implements OnInit {
           navigator.geolocation.getCurrentPosition(position => {
             const result = this.endpoints.sort((a, b) => this._distance(position, a) - this._distance(position, b))
             this.endpoint = result.length ? result[0] : null
+            this._loadData(this.endpoint)
           })
         } else {
           this.endpoint = this.endpoints.length ? this.endpoints[0] : null
+          this._loadData(this.endpoint)
         }
-        this._loadData(this.endpoint)
       }
     )
     this.endpointsRefreshInterval = interval(60000).subscribe(
@@ -55,6 +56,7 @@ export class IndexComponent implements OnInit {
   }
 
   private _loadData(endpoint: Endpoint) {
+    console.log(endpoint)
     if (!endpoint) return
     this.endpointService.getCurrentData(endpoint.id).subscribe(
       response => this.currentData = response.data,

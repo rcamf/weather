@@ -10,7 +10,7 @@ import { UserRouter } from "./routers/UserRouter";
 dotenv.config()
 const PORT = process.env.PORT || 8080;
 
-const whitelist = ['http://localhost:4200', 'http://192.168.178.26:4200']
+const whitelist = ['http://localhost:4200', 'localhost']
 const corsOptions = {
   origin: (origin: string, callback: (err: Error | null, allow?: boolean) => void) => {
     if (whitelist.indexOf(origin) !== -1) callback(null, true)
