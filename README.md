@@ -29,6 +29,9 @@ docker-compose up -d
 ```
 Sobald der Befehl fertig ist, laufen auf deinem Rechner zwei verschiedene Container, jeweils einer für Website und Api. Nun kann du die Website unter http://localhost erreichen. Solltest du die auf die Api zugreifen wollen, kannst du dies unter http://localhost:8080 tun.
 
+[Dokumentation der Api][4]
+
 [1]: https://git-scm.com/downloads
 [2]: https://nodejs.org/en/download/
 [3]: https://docs.docker.com/compose/install/
+[4]: https://github.com/cfRIKO/weather/wiki
