@@ -1,10 +1,10 @@
 version: "3"
 services: 
   web: 
-    image: wetter/website
+    build: website/ 
     ports: 
       - "80:80"
   api: 
-    image: wetter/api
+    build: api/ 
     ports: 
       - "8080:8080"

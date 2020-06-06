@@ -8,8 +8,10 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build --prod
+RUN npm run build -- --prod
 
 FROM nginx
 
 COPY --from=builder /usr/src/website/dist/website /usr/share/nginx/html
+
+COPY ./nginx-default.conf /etc/nginx/conf.d/default.conf
