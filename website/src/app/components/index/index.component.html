@@ -1,0 +1,51 @@
+<app-layout>
+  <div class='container'>
+    <mat-card class='card'>
+      <div class='searchbar'>
+        <mat-autocomplete #auto='matAutocomplete' (optionSelected)='selectionChange($event)'>
+          <mat-option *ngFor='let endpoint of filteredEndpoints | async'
+            [value]="endpoint.city + ', ' + endpoint.country">
+            {{ endpoint.city + ', ' + endpoint.country }}
+          </mat-option>
+        </mat-autocomplete>
+        <mat-form-field appearance='outline' class='fill'>
+          <input matInput placeholder='Weather in ...' [formControl]='searchBar' [matAutocomplete]='auto'>
+        </mat-form-field>
+        <button mat-icon-button color='primary' (click)='selectionChange($event)'>
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+    <mat-card class='card'>
+      <mat-card-title *ngIf='endpoint'>Weather in {{ endpoint.city + ', ' + endpoint.country }}</mat-card-title>
+      <mat-card-content>
+        <div *ngIf='!currentData' class='container'>
+          <mat-spinner diameter='40'></mat-spinner>
+        </div>
+        <div class='split' *ngIf='currentData'>
+          <div class='information'>
+            <p class='infotext'>Temperature: {{ currentData.temperature }}</p>
+            <p class='infotext'>Humidity: {{ currentData.humidity }}</p>
+          </div>
+          <div class='image'>
+            <img [src]="imagePath" height='200vh' alt="Weather image">
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class='fill card'>
+      <mat-tab-group *ngIf='data && nextData'>
+        <mat-tab label='Previous Weather'>
+          <ng-template matTabContent>
+            <app-line-chart [data]='data'></app-line-chart>
+          </ng-template>
+        </mat-tab>
+        <mat-tab label='Weather Forecast'>
+          <ng-template matTabContent>
+            <app-line-chart [data]='nextData'></app-line-chart>
+          </ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+</app-layout>

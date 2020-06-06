@@ -1,0 +1,72 @@
+<div class='container'>
+  <mat-card>
+    <mat-card-title>
+      <div class='center'>
+        Signup
+      </div>
+    </mat-card-title>
+    <mat-card-content>
+      <div>
+        <form [formGroup]='signupForm'>
+          <div class='row'>
+            <mat-form-field appearance='outline' class='margin'>
+              <mat-label>
+                Surname
+              </mat-label>
+              <input matInput formControlName='surname' autocomplete='given-name'>
+            </mat-form-field>
+            <mat-form-field appearance='outline' class='margin'>
+              <mat-label>
+                Name
+              </mat-label>
+              <input matInput formControlName='name' autocomplete='family-name'>
+            </mat-form-field>
+          </div>
+          <div class="row full-width">
+            <mat-form-field appearance='outline' class='full-width margin'>
+              <mat-label>
+                Username
+              </mat-label>
+              <input matInput formControlName='username' autocomplete='username' required>
+              <mat-error *ngIf="signupForm.get('username').invalid">A username is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class="row full-width">
+            <mat-form-field appearance='outline' class='full-width margin'>
+              <mat-label>
+                Email
+              </mat-label>
+              <input matInput formControlName='email' autocomplete='email' required>
+              <mat-error *ngIf="signupForm.get('email').invalid">A valid email is required</mat-error>
+            </mat-form-field>
+          </div>
+          <div class='row'>
+            <mat-form-field appearance='outline'  class='margin'>
+              <mat-label>
+                Password
+              </mat-label>
+              <input matInput type='password' formControlName='password' autocomplete='new-password' required>
+              <mat-hint *ngIf="!signupForm.get('password').hasError('pattern') && signupForm.get('password').value.length">Strength: {{ getPasswordStrength() }}</mat-hint>
+              <mat-error *ngIf="signupForm.get('password').hasError('required')">A password is required</mat-error>
+              <mat-error *ngIf="signupForm.get('password').hasError('pattern')">Must contain a number and have a size of 8</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance='outline' class='margin'>
+              <mat-label>
+                Confirm password
+              </mat-label>
+              <input matInput type='password' formControlName='passwordConfirm' [errorStateMatcher]='parentErrorStateMatcher' autocomplete='new-password' required>
+              <mat-error *ngIf="signupForm.get('passwordConfirm').invalid || signupForm.hasError('noMatch')">A matching password is required</mat-error>
+            </mat-form-field>
+          </div>
+          <button class='align-right' *ngIf='!loading' mat-raised-button color='primary' (click)='signup()'>Signup</button>
+          <mat-spinner class='align-right' *ngIf='loading' diameter='30'></mat-spinner>
+        </form>
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+      <div class='center'>
+        <a routerLink='/login' mat-button color='primary'>Login instead</a>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+</div>

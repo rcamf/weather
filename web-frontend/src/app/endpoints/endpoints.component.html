@@ -1,0 +1,15 @@
+<h2>
+  Endpunkt hinzufügen
+</h2>
+<input type="text" name="name" id="name"/>
+<pre *ngIf="result != null">{{ result }}</pre>
+<button (click)="handleSubmit($event)">Hinzufügen</button>
+<div *ngIf="endpoints.length > 0" id="endpointsDiv">
+  <div *ngFor="let endpoint of endpoints; index as i">
+    <p>{{ i }}</p>
+    <div class="data">
+      <p>{{ endpoint.name }}</p>
+      <p><a [href]="endpoint.url">{{ endpoint.url }}</a></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div id="dashboard">
+  <h1>{{ endpoint }}</h1>
+  <div id="mainDisplay">
+    <app-image [path]="path"></app-image>
+    <app-data
+      [header]="'Temperatur'"
+      [value]="temperature"
+      [unit]="'°C'"
+    ></app-data>
+    <app-data
+      [header]="'Luftfeuchtigkeit'"
+      [value]="humidity"
+      [unit]="'%'"
+    ></app-data>
+  </div>
+  <app-tabs>
+    <app-tab tabTitle="Letzte Stunde">
+      <div id="prevchartdiv">
+        <app-line-chart [data]="prevTemperatures" [header]="'Temperature'"></app-line-chart>
+        <app-line-chart [data]="prevHumidities" [header]="'Humidity'"></app-line-chart>
+      </div>
+    </app-tab>
+    <app-tab tabTitle="Nächste Stunde">
+      <div id="nextchartdiv">
+        <app-line-chart [data]="newTemperatures" [header]="'Temperature'"></app-line-chart>
+        <app-line-chart [data]="newHumidities" [header]="'Humidity'"></app-line-chart>
+      </div>
+    </app-tab>
+  </app-tabs>
+</div>

@@ -1,0 +1,78 @@
+<mat-card-title>Settings</mat-card-title>
+<mat-divider></mat-divider>
+<mat-card-content>
+  <form [formGroup]='profileForm'>
+    <div class='container'>
+      <div class='row'>
+        <div class='profile-field'>
+          <span>Surname</span>
+          <mat-form-field appearance='outline'>
+            <input matInput formControlName='surname'>
+          </mat-form-field>
+        </div>
+        <div class='profile-field'>
+          <span>Name</span>
+          <mat-form-field appearance='outline'>
+            <input matInput formControlName='name'>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class='profile-field'>
+        <span>Username</span>
+        <mat-form-field appearance='outline'>
+          <input matInput formControlName='username'>
+          <mat-error *ngIf="profileForm.get('username').hasError('required')">A username is required</mat-error>
+          <mat-error *ngIf="profileForm.get('username').hasError('usernameExists')">Username not available</mat-error>
+        </mat-form-field>
+      </div>
+      <div class='profile-field'>
+        <span>Email</span>
+        <mat-form-field appearance='outline'>
+          <input matInput formControlName='email'>
+          <mat-error *ngIf="profileForm.get('email').invalid">A valid email is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class='checkbox-field'>
+        <span>Public:&nbsp;</span>
+        <mat-checkbox formControlName='public'></mat-checkbox>
+      </div>
+      <mat-spinner class='align-right' *ngIf='loading' diameter='30'></mat-spinner>
+      <button class='align-right' *ngIf='!loading' mat-raised-button color='primary' (click)='updateProfile()'>Update Profile</button>
+    </div>
+  </form>
+  <mat-divider></mat-divider>
+  <form [formGroup]='passwordForm'>
+    <div class="container">
+      <div class='row'>
+        <div class="profile-field">
+          <span>Old Password</span>
+          <mat-form-field appearance='outline'>
+            <input matInput type='password' formControlName='oldPassword' autocomplete='current-password' required>
+            <mat-error *ngIf="passwordForm.get('oldPassword').hasError('incorrect')">The old password is incorrect</mat-error>
+            <mat-error *ngIf="passwordForm.get('oldPassword').hasError('required')">The old password is required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class='row'>
+        <div class="profile-field">
+          <span>Password</span>
+          <mat-form-field appearance='outline'>
+            <input matInput type='password' formControlName='password' autocomplete='new-password' required>
+            <mat-hint *ngIf="!passwordForm.get('password').hasError('pattern') && passwordForm.get('password').value && passwordForm.get('password').value.length">Strength: {{ getPasswordStrength() }}</mat-hint>
+            <mat-error *ngIf="passwordForm.get('password').hasError('required')">A password is required</mat-error>
+            <mat-error *ngIf="passwordForm.get('password').hasError('pattern')">Must contain a number and have a size of 8</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="profile-field">
+          <span>Confirm password</span>
+          <mat-form-field appearance='outline'>
+            <input matInput type='password' formControlName='passwordConfirm' [errorStateMatcher]='parentErrorStateMatcher' autocomplete='new-password' required>
+            <mat-error *ngIf="passwordForm.get('passwordConfirm').invalid || passwordForm.hasError('noMatch')">A matching password is required</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <mat-spinner class='align-right' *ngIf='loadingPassword' diameter='30'></mat-spinner>
+      <button class='align-right' *ngIf='!loadingPassword' mat-raised-button color='primary' (click)='changePassword()'>Change Password</button>
+    </div>
+  </form>
+</mat-card-content>

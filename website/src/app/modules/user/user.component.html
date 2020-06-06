@@ -1,0 +1,27 @@
+<app-layout>
+  <div class='container'>
+    <mat-card class='card sidenav'>
+      <mat-card-title>
+        Profile
+      </mat-card-title>
+      <mat-card-content>
+        <mat-list>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink='/user' class='color'>Settings</a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink='/user/endpoints' class='color'>Endpoints</a>
+          <mat-divider></mat-divider>
+          <a mat-list-item routerLink='/user/subscriptions' class='color'>Subscriptions</a>
+          <mat-divider></mat-divider>
+          <a mat-list-item (click)='logout()' routerLink='/' class='color'>
+            Logout
+          </a>
+          <mat-divider></mat-divider>
+        </mat-list>        
+      </mat-card-content>
+    </mat-card>
+    <mat-card class='card fill'>
+      <router-outlet></router-outlet>
+    </mat-card>
+  </div>
+</app-layout>

@@ -1,0 +1,40 @@
+<div class='container'>
+  <mat-card>
+    <mat-card-title>
+      <div class="center">
+        Login
+      </div>
+    </mat-card-title>
+    <mat-card-content>
+      <div>
+        <form [formGroup]='loginForm'>
+          <div class='row'>
+            <mat-form-field appearance='outline' class='margin'>
+              <mat-label>
+                Username
+              </mat-label>
+              <input matInput formControlName='username' autocomplete='username' required>
+              <mat-error *ngIf="loginForm.get('username').invalid">{{ getErrorMessage('username') }}</mat-error>
+            </mat-form-field>
+          </div>
+          <div class='row'>
+            <mat-form-field appearance='outline' class='margin'>
+              <mat-label>
+                Password
+              </mat-label>
+              <input matInput type='password' formControlName='password' autocomplete='current-password' required>
+              <mat-error *ngIf="loginForm.get('password').invalid">{{ getErrorMessage('password') }}</mat-error>
+            </mat-form-field>
+          </div>
+          <button class='align-right' *ngIf='!loading' mat-raised-button color='primary' (click)='login()'>Login</button>
+          <mat-spinner class='align-right' *ngIf='loading' diameter='30'></mat-spinner>
+        </form>
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+      <div class="center">
+        <a routerLink='/signup' mat-button color='primary'>Signup instead</a>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+</div>

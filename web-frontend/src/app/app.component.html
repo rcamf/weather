@@ -1,33 +1,5 @@
-<div id="banner">
-  <h1 id="uber">Wetter Heute in Bornheim</h1>
-</div>
-<div style="position: fixed; top: 0; right: 0; margin-top: 10px;">
-  <img
-    style="height: 120px; width: 120px; "
-    src="https://images-eu.ssl-images-amazon.com/images/I/614ZciL2toL.png"
-  />
-</div>
-<div id="maindiv">
-  <div id="flexdiv">
-    <app-image [path]="path"></app-image>
-    <!-- <app-demo
-        [exampleInput]="inputValue"
-        (exampleOutput)="onOutputTriggered($event)"
-      ></app-demo> -->
-    <app-data
-      [header]="'Temperatur'"
-      [value]="temperature"
-      [unit]="'°C'"
-    ></app-data>
-    <app-data
-      [header]="'Luftfeuchtigkeit'"
-      [value]="humidity"
-      [unit]="'%'"
-    ></app-data>
-    <app-data
-      [header]="'Vor einer Stunde'"
-      [value]="ot"
-      [unit]="'°C'"
-    ></app-data>
-  </div>
-</div>
+<nav>
+  <a routerLink="/">Wetter</a>
+  <a routerLink="/endpunkte">Endpunkte verwalten</a>
+</nav>
+<router-outlet></router-outlet>

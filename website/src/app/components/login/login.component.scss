@@ -1,0 +1,28 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  margin: 2vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.align-right {
+  align-self: flex-end;
+}
+
+.margin {
+  margin: 0.5vh;
+}
+

@@ -1,145 +1,33 @@
 import cors from "cors";
 import express from "express";
-import fs, { read } from "fs";
-import path from "path";
+import { EndpointRouter } from "./routers/EndpointRouter"
+import { AuthRouter } from "./routers/AuthRouter";
+import * as dotenv from "dotenv"
+import { UserRouter } from "./routers/UserRouter";
 
-const app = express();
-const port = 8080;
+// Admin pw: PasswortIstSicher
 
-app.use(cors());
+dotenv.config()
+const PORT = process.env.PORT || 8080;
 
-// API-URL
-app.get("/api/getCurrentData", (req, res) => {
-  fs.readdir("../data", (direrr, files) => {
-    if (direrr) {
-      res.sendStatus(500);
-    } else {
-      files.sort((a, b) => (a < b ? 1 : -1));
-      fs.readFile(path.join("../data", files[0]), "utf8", (fileerr, data) => {
-        if (fileerr) {
-          res.sendStatus(501);
-        } else {
-          const weather = JSON.parse(data);
-          res.send({
-            date: files[0],
-            temperature: weather.temperature,
-            humidity: weather.humidity
-          });
-        }
-      });
-    }
-  });
-});
-
-app.get("/api/getData", (req, res) => {
-  fs.readdir("../data", (direrr, files) => {
-    if (direrr) {
-      res.sendStatus(500);
-    } else {
-      let END = 60;
-      if (
-        req.query.minutes &&
-        req.query.minutes <= 60 &&
-        !(req.query.minutes <= 0)
-      ) {
-        END = req.query.minutes;
-      } else if (req.query.minutes) {
-        res.sendStatus(400);
-        return;
-      }
-      const tmpFiles = files
-        .sort((a, b) => (a < b ? 1 : -1))
-        .slice(0, END)
-        .sort((a, b) => (a > b ? 1 : -1));
-      const output = tmpFiles.map(file => {
-        const data = fs.readFileSync(path.join("../data", file), "utf8");
-        const weather = JSON.parse(data);
-        return {
-          date: file,
-          temperature: weather.temperature,
-          humidity: weather.humidity
-        };
-      });
-      res.send(output);
-    }
-  });
-});
-
-app.get("/api/getNextData", (req, res) => {
-  let END = 60;
-  if (
-    req.query.minutes &&
-    req.query.minutes <= 60 &&
-    !(req.query.minutes <= 0)
-  ) {
-    END = req.query.minutes;
-  } else if (req.query.minutes) {
-    res.sendStatus(400);
-    return;
+const whitelist = ['http://localhost:4200', 'localhost']
+const corsOptions = {
+  origin: (origin: string, callback: (err: Error | null, allow?: boolean) => void) => {
+    if (whitelist.indexOf(origin) !== -1) callback(null, true)
+    else callback(new Error('Not allowed by CORS'))
   }
-  fs.readdir("../data", (direrr, files) => {
-    if (direrr) {
-      res.sendStatus(500);
-    } else {
-      files.sort((a, b) => (a < b ? 1 : -1));
-      fs.readFile(path.join("../data", files[0]), "utf8", (fileerr, data) => {
-        if (fileerr) {
-          res.sendStatus(501);
-        } else {
-          let weather = JSON.parse(data);
-          const dateParts = files[0].split("-");
-          const currentDate = new Date(
-            parseInt(dateParts[0], 10),
-            parseInt(dateParts[1], 10),
-            parseInt(dateParts[2], 10),
-            parseInt(dateParts[3], 10),
-            parseInt(dateParts[4], 10)
-          );
-          const output = [];
-          let slopeTemp = Math.floor(Math.random() * 3) - 1;
-          let slopeHum = Math.floor(Math.random() * 3) - 1;
-          for (let i = 0; i < END; i++) {
-            currentDate.setMinutes(currentDate.getMinutes() + 1); // Nächstes Datum
-            if (i % (Math.floor(Math.random() * 3) + 4) === 0) {
-              slopeTemp = Math.floor(Math.random() * 3) - 1;
-              slopeHum = Math.floor(Math.random() * 3) - 1;
-            }
-            weather = {
-              temperature:
-                weather.temperature + (Math.random() / 25) * slopeTemp,
-              humidity: weather.humidity + (Math.random() / 55) * slopeHum
-            };
-            output.push({
-              date:
-                currentDate.getFullYear() +
-                "-" +
-                (currentDate.getMonth() < 10
-                  ? "0" + currentDate.getMonth()
-                  : currentDate.getMonth()) +
-                "-" +
-                (currentDate.getDate() < 10
-                  ? "0" + currentDate.getDate()
-                  : currentDate.getDate()) +
-                "-" +
-                (currentDate.getHours() < 10
-                  ? "0" + currentDate.getHours()
-                  : currentDate.getHours()) +
-                "-" +
-                (currentDate.getMinutes() < 10
-                  ? "0" + currentDate.getMinutes()
-                  : currentDate.getMinutes()),
-              temperature: weather.temperature.toFixed(2),
-              humidity: weather.humidity.toFixed(2)
-            });
-          }
-          res.send(output);
-        }
-      });
-    }
-  });
-});
+}
+
+const app = express()
+app.disable('X-powered-by')
+
+app.use(express.json())
+
+app.use('/endpoints', cors(), EndpointRouter)
+app.use('/auth', cors(), AuthRouter)
+app.use('/users', cors(), UserRouter)
 
 // start the Express server
-app.listen(port, () => {
-  console.log(`server started at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`server started at http://localhost:${PORT}`);
 });

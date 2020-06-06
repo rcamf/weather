@@ -1,0 +1,37 @@
+<app-layout>
+  <div class='container'>
+    <mat-card class='card fill'>
+      <mat-card-title>
+        Users
+      </mat-card-title>
+      <div class='divider'>
+        <mat-divider></mat-divider>
+      </div>
+      <mat-card-content>
+        <mat-accordion *ngIf='users'>
+          <mat-expansion-panel *ngFor='let user of users; index as i'>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ user.username }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list>
+              <mat-list-item>Surname: {{ user.surname || 'N/A' }}</mat-list-item>
+              <mat-list-item>Name: {{ user.name || 'N/A' }}</mat-list-item>
+              <mat-list-item>Email: {{ user.email }}</mat-list-item>
+              <mat-list-item>Public: {{ user.public }}</mat-list-item>
+              <mat-list-item *ngIf='following'>
+                <div class='button-row'>
+                  <button mat-icon-button (click)='changeFollowing(user)'>
+                    <mat-icon [color]="isFollowing(user) ? 'primary': ''">{{ isFollowing(user) ? 'favorite' : 'favorite_border' }}</mat-icon>
+                  </button>
+                </div>
+              </mat-list-item>
+            </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-spinner *ngIf='!users'></mat-spinner>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</app-layout>
