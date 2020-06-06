@@ -1,43 +1,34 @@
-# Projekttag: Leistungskurs Informatik, 06.03.2020
+# Projekttag: Leistungskurs Informatik, 06.03.2020 extended version
+##### [Original](https://gitlab.com/paul.heising/schuelertag-ema-2020/)
+Dieses Projekt ist im Rahmen einer Exkursion meines Informatik-Leistungskurses enstanden. Im nachhinein habe ich die Api überarbeitet und eine neue Version der Website hinzugefügt. Das Repository steht frei zur Verfügung. Wenn du Bugs findest, kannst du dich gerne bei mir melden oder ein Issue aufmachen. Für Pull Requests müssen die Commits übersichtlich dokumentiert sein, dann nehme ich die Änderung gerne auf.
+## Installation
+Zuerst musst du das Programm [Git][1] installieren. Git brauchst du, um die Dateien aus diesem Repository auf deinen Rechner zu bekommen. Dafür musst du nur in einen Ordner deiner Wahl navigieren und den folgenden Befehl ausführen.
+```bash
+git clone https://github.com/cfRIKO/weather.git
+```
+Nachdem der Download abgeschlossen ist, hast du zwei Möglichkeiten. Entweder du führst die Website und die Api direkt auf deinem Rechner aus und folgst dem Ausführen mit NodeJS oder du nutzt Docker und Docker-Compose, um die Website und Api in einem Container auf deinem Rechner auszuführen.
+### Ausführen mit NodeJS
+Damit du die Website und die Api direkt auf deinem Rechner ausführen kannst, musst du dir die Long-Term-Support (LTS) Version von [NodeJS][2] herunterladen. NodeJS ist eine Laufzeitumgebung, die dir ermöglich Javascript außerhalb deines Browsers auszuführen. Anschließend öffnest du die Ordner "weather/website" und "weather/api" jeweils in einer Kommandozeile und führst in beiden Fenstern folgenden Befehl aus.
+```bash
+npm install
+```
+Dieser Befehl lädt alle Packete herunter die von der Website oder der Api gebraucht werden. Um jetzt die Website zu starten, musst du in der Kommandozeile der Website folgendes ausführen.
+```bash
+npm start
+```
+Zum Starten der Api musst du in der anderen Kommandozeile folgenden Befehl ausführen.
+```bash
+npm run dev
+```
+Nachdem beide Programme gestartet wurden, musst du einige Zeit warten, bis der Startprozess beendet ist, und kannst die Website unter http://localhost:4200 erreichen. Solltest du die auf die Api zugreifen wollen, kannst du dies unter http://localhost:8080 tun.
 
-## Viel Betrieb bei WetterOnline
+### Ausführen mit Docker
+Damit du die Website und die Api in einem Container auf deinem Rechner ausführen kannst, musst du dir [Docker-Compose][3] herunterladen. Docker ermöglich dem Nutzer für einzelne Programme gesonderte Container zu erstellen, die wie eine Art Virtuelle Maschine funktionieren. Hierbei ist der überzeugende Punkt, dass die Programme getrennt von anderen Prozessen auf deinem Computer laufen. Docker-Compose ist eine Erweiterung die erlaubt, das Starten mehrerer Container zu verknüpfen. Nachdem du Docker installiert hast, öffnest du den Order "weather" in einer Kommandozeile und führst folgenden Befehl aus.
+```bash
+docker-compose up -d
+```
+Sobald der Befehl fertig ist, laufen auf deinem Rechner zwei verschiedene Container, jeweils einer für Website und Api. Nun kann du die Website unter http://localhost erreichen. Solltest du die auf die Api zugreifen wollen, kannst du dies unter http://localhost:8080 tun.
 
-Bei WetterOnline herrscht wie so oft viel Betrieb. Alle Entwickler arbeiten am Rand ihrer Erschöpfung an Projekten, da kommt kurz nach Karneval ein weiterer Kundenauftrag von den Beueler Stadtsoldaten herein. Es soll schnellstmöglich eine mobile Wetter-Applikation entwickelt werden damit die Damen und Herren beim nächsten Mal nicht nass werden. Die Deadline ist tight, wir haben nur ein Jahr! 
-
-Doch das Wetter und der Fachkräftemangel machen WetterOnline einen Strich durch die Rechnung. Der zu warme Winter und frühe Frühling hält die Nation in Atem. Wir verzeichnen Rekordzugriffe auf wetteronline.de. Alle Mitarbeiter sind im Einsatz, um den großen Andrang bedienen zu können, doch die saisonbedingte Grippewelle dünnt unsere Reihen weiter aus. 
-
-Jetzt bleibt keine Zeit mehr für einen Kundenauftrag! Was nun? Doch unsere Human Resources Abteilung schmiedet einen genialen Plan... Schüler! Jung, dynamisch und dazu noch völlig umsonst! Ich greife zum Telefon und informiere den Informatik LK des EMA...
-
-## Was wird benötigt?
-
-###  Android App / Client
-
-Der Kunde möchte eine eine Android-App haben, die "auf den gängigen Handys gut und schön" aussieht. Die Applikation soll anzeigen "wie das Wetter wird". Was im Einzelnen dargestellt werden soll, bleibt den Entwicklern überlassen. 
-Die App soll die Wettervorhersage für beliebige Orte anzeigen, die man über eine Texteingabe suchen kann. 
-
-### Web App / Client
-
-Da der Kunde überwiegend aus älteren heller-häutigen Männern besteht und das mit dem Internet für uns alle Neuland ist, soll zusätzlich zur App auch ein Web Frontend entstehen. Es sollen dieselben Daten wie in der App dargestellt werden, aber mit einem Fokus auf Barrierefreiheit.
-
-### API Schnittstelle / Server
-
-Es soll eine Server-Schnittstelle bereitgestellt werden, die dem Client Wetterdaten für beliebige Orte liefert. Die Apps sollen per HTTP-Request auf diese Schnittstelle zugreifen können. 
-
-### Meteorologische Messstation
-
-Für das aktuelle Wetter soll eine Wetterstation gebaut werden. Mit Hilfe des Arduinos soll die Temperatur und Luftfeuchtigkeit gemessen werden. Es gilt dann die Messdaten an den Computer zu übertragen und zu speichern.
-
-## Hilfsmittel und Arbeitsgruppen
-
-Zur Realisierung des Auftrages werden Rechner und ein „Server“ zur Verfügung gestellt. Für die Messstation stehen Arduino-Microcontroller bereit. Auf allen Rechnern ist als Betriebssystem Windows installiert.
-
-Die Aufgaben sollen in Teams bearbeitet werden. Bitte findet euch zu 4 Teams zusammen, wobei jedes Team eines der Teilprojekte übernimmt -  also die Programmierung der Frontends (2x), des Backends (1x) und der Messstation (1x). Die Konzeption der Teilaufgaben im jeweiligen Teilprojekt soll jede Gruppe selbst vornehmen.
-
-Die Erfahrung zeigt, dass eine kontinuierliche Abstimmung der einzelnen Teilprojekte untereinander vor dem Start und auch während der Laufzeit unerlässlich ist, um das Gesamtprojekt zu einer Erfolgsgeschichte zu machen.
-
-Natürlich führen wie immer viele Wege zum Ziel. Die Entwicklerteams können selbst entscheiden, welchen Weg genau Sie einschlagen möchten. Jedenfalls wartet der Kunde auf die Erfüllung seines Auftrages!
-
-Jeder Gruppe ist ein Ansprechpartner zugewiesen, bitte scheut euch nicht uns bei Problemen anzusprechen!
-
-Für die Präsentation der Ausarbeitung stehen pro Gruppe etwa 10 Minuten zur Verfügung. 
-Viel Spaß und Erfolg bei der Bearbeitung der Aufgaben.
+[1]: https://git-scm.com/downloads
+[2]: https://nodejs.org/en/download/
+[3]: https://docs.docker.com/compose/install/
