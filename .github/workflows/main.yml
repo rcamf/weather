@@ -35,7 +35,9 @@ jobs:
           npm run build -- --prod
       
       - name: Zip Dist Folder
-        run: zip -r release.zip dist
+        run: |
+          ls
+          zip -r release.zip dist
       
       - name: Create Release
         id: release
