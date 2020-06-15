@@ -56,5 +56,5 @@ jobs:
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
           asset_path: ./website/release.zip
-          asset_name: Release ${{ github.ref }}
+          asset_name: Release.zip
           asset_content_type: application/zip
