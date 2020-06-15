@@ -29,14 +29,13 @@ jobs:
 
       - name: npm ci and npm run build
         run: |
-          ls
           cd website
           npm ci
           npm run build -- --prod
       
       - name: Zip Dist Folder
         run: |
-          ls
+          cd website
           zip -r release.zip dist
       
       - name: Create Release
@@ -56,6 +55,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.release.outputs.upload_url }}
-          asset_path: ./release.zip
+          asset_path: ./website/release.zip
           asset_name: Release ${{ github.ref }}
           asset_content_type: application/zip
