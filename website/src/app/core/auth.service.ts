@@ -5,12 +5,13 @@ import { catchError, share } from 'rxjs/operators';
 import { handleError } from './directives/handleError.directive';
 import { ActiveUser } from './directives/user.directive';
 import { Response } from './directives/response.directive';
+import { environment } from '../../environments/environment' 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private url = 'http://localhost:8080/auth/'
+  private url = environment.apiPath + '/auth/'
   private userSubject: BehaviorSubject<ActiveUser>
   private user: Observable<ActiveUser>
   private activeUser: boolean

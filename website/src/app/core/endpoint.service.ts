@@ -5,12 +5,13 @@ import { retry, catchError } from 'rxjs/operators';
 import { handleError } from './directives/handleError.directive';
 import { Response } from './directives/response.directive';
 import { WeatherData } from './directives/weather-data.directive';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EndpointService {
-  private url = 'http://localhost:8080/endpoints/'
+  private url = environment.apiPath + '/endpoints/'
 
   constructor(private httpClient: HttpClient) { }
 

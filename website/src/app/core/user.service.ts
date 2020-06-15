@@ -5,12 +5,13 @@ import { handleError } from './directives/handleError.directive';
 import { Response } from './directives/response.directive';
 import { ActiveUser } from './directives/user.directive';
 import { Endpoint } from './directives/endpoint.directive';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private url = 'http://localhost:8080/users/'
+  private url = environment.apiPath + '/users/'
 
   constructor(private httpClient: HttpClient) { }
 
