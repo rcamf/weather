@@ -2,11 +2,11 @@ FROM node:12
 
 WORKDIR /usr/src/api
 
-COPY package*.json ./
+COPY ./api/package*.json ./
 
 RUN npm install
 
-COPY . . 
+COPY ./api . 
 
 EXPOSE 8080
 
