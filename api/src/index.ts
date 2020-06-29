@@ -23,9 +23,9 @@ app.disable('X-powered-by')
 
 app.use(express.json())
 
-app.use('/endpoints', cors(whitelist), EndpointRouter)
-app.use('/auth', cors(whitelist), AuthRouter)
-app.use('/users', cors(whitelist), UserRouter)
+app.use('/endpoints', cors(corsOptions), EndpointRouter)
+app.use('/auth', cors(corsOptions), AuthRouter)
+app.use('/users', cors(corsOptions), UserRouter)
 
 // start the Express server
 app.listen(PORT, () => {
