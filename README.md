@@ -1,3 +1,5 @@
+Das Projekt wird nicht mehr fortgeführt und die Website wurde vom Netz genommen. Sollte jemand dieses Projekt weiter verwenden wollen kann man sich einfach den Source-Code clonen.
+
 # Projekttag: Leistungskurs Informatik, 06.03.2020 extended version
 ##### [Original](https://gitlab.com/paul.heising/schuelertag-ema-2020/)
 Dieses Projekt ist im Rahmen einer Exkursion meines Informatik-Leistungskurses enstanden. Im nachhinein habe ich die Api überarbeitet und eine neue Version der Website hinzugefügt. Das Repository steht frei zur Verfügung. Wenn du Bugs findest, kannst du dich gerne bei mir melden oder ein Issue aufmachen. Für Pull Requests müssen die Commits übersichtlich dokumentiert sein, dann nehme ich die Änderung gerne auf.
